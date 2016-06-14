@@ -101,3 +101,5 @@
 Route::get('/requestRecoveryPassword','LoginController@forgotPassword');
 
 Route::get('/passwordChanged/{unique_key}','SettingsController@recoverPassword');
+
+Route::get('/photoUser','PhotoController@teste');
