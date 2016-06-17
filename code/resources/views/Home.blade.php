@@ -54,14 +54,21 @@
 
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
+        <?php $user = \Auth::user();?>
+        <?php $photo = \App\UserProfilePhoto::where('user',$user->id)->first()?>
+        @if($photo)
         <div class="pull-left image">
-          <img src={'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xal1/v/t1.0-1/p100x100/12347836_10205036700748952_7397539060889470974_n.jpg?oh=93be2c5371a8361acf79e85dc9db0263&oe=580A6897&__gda__=1472589861_05d82fabc18b658431209cd38730a980'} class="img-circle" alt="User Image">
+          <img src={{$photo->url}} class="img-circle" alt="User Image">
         </div>
-        <div class="pull-left info">
-          <?php $user = \Auth::user();?>
-          <p><?php echo $user->name?></p>
-          <p><?php echo $user->email?></p>
-        </div>
+        @else
+            <div class="pull-left image">
+              <img src={{url('/resources/img/user.jpg')}} class="img-circle" alt="User Image">
+            </div>
+          @endif
+            <div class="pull-left info">
+            <p><?php echo $user->name?></p>
+            <p><?php echo $user->email?></p>
+            </div>
       </div>
 
       <!-- Sidebar Menu -->

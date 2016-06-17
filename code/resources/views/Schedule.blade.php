@@ -92,13 +92,40 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="col-md-3">
-        <div class="row">
-          <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#newYearModal">New School Year</button>
+      <div class="col-sm-4 col-xs-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">School Years</h3>
+          </div>
+          <div class="box-body" id="years">
+          </div>
+          <div class="box-footer">
+            <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#newYearModal">New School Year</button>
+          </div>
         </div>
-        </br>
-        <div class="row">
-          <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#newTermModal">New School Term</button>
+      </div>
+      <div class="col-sm-4 col-xs-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">School Terms</h3>
+          </div>
+          <div class="box-body" id="terms">
+          </div>
+          <div class="box-footer">
+            <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#newTermModal">New School Term</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">Subjects</h3>
+          </div>
+          <div class="box-body" id="subjects">
+          </div>
+          <div class="box-footer">
+            <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#newSubjectModal">New Subject</button>
+          </div>
         </div>
       </div>
     </section>
@@ -209,6 +236,124 @@
   </div>
 </div>
 
+<!-- Modal New Subject -->
+<div class="modal fade" id="newSubjectModal" tabindex="-1" role="dialog" aria-labelledby="newSubjectModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Create new Subject</h4>
+      </div>
+      <form action="{{url('/newSubject')}}" method="get">
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group has-feedback col-sm-12">
+              <input type="text" class="form-control" placeholder="Subject name" name="name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group has-feedback col-sm-12">
+              <input type="text" class="form-control" placeholder="Teacher's name" name="teacher">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save Subject</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Year -->
+<div class="modal fade" id="editYearModal" tabindex="-1" role="dialog" aria-labelledby="editYearModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Edit School Year</h4>
+      </div>
+      <form action="{{url('/newSchoolYear')}}" method="get">
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group has-feedback col-sm-12">
+              <input type="text" class="form-control" placeholder="Year name" name="name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group has-feedback col-sm-6">
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="ion-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="editYearStartDate" placeholder="Start date" name="startDate">
+              </div>
+            </div>
+            <div class="form-group has-feedback col-sm-6">
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="ion-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="editYearEndDate" placeholder="End date" name="endDate">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save year</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Term -->
+<div class="modal fade" id="editTermModal" tabindex="-1" role="dialog" aria-labelledby="editTermModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Edit School Term</h4>
+      </div>
+      <form action="{{url('/newSchoolTerm')}}" method="get">
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group has-feedback col-sm-12">
+              <input type="text" class="form-control" placeholder="Term name" name="name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group has-feedback col-sm-6">
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="ion-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="editTermStartDate" placeholder="Start date" name="startDate">
+              </div>
+            </div>
+            <div class="form-group has-feedback col-sm-6">
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="ion-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="editTermEndDate" placeholder="End date" name="endDate">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save term</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.0 -->
@@ -238,6 +383,94 @@
     format: 'yyyy-mm-dd',
     autoclose: true
   });
+  $('#editYearStartDate').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true
+  });
+  $('#editYearEndDate').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true
+  });
+  $('#editTermStartDate').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true
+  });
+  $('#editTermEndDate').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true
+  });
+
+  var currentYear;
+  var currentTerm;
+  var currentSubject;
+
+  $(function() {
+    loadYears();
+  });
+
+  $('#years').on("click", ("[name='schoolYear']"), function () {
+    var yearName = this.id.split('-');
+    var yearId = yearName[1];
+
+    currentYear = yearId;
+    $('[id^="year-"]').removeClass("active");
+    $('#'+this.id).addClass("active");
+
+    loadTerms(yearId);
+  });
+
+  $('#terms').on("click", ("[name='schoolTerm']"), function () {
+    var termName = this.id.split('-');
+    var termId = termName[1];
+
+    currentTerm = termId;
+    $('[id^="term-"]').removeClass("active");
+    $('#'+this.id).addClass("active");
+    loadSubjects(termId);
+  });
+
+  function loadYears() {
+    $.get('{{url('/getYears')}}', function (years) {
+      $('#years').html("");
+      $('#subjects').html("");
+      $('#terms').html("");
+      $.each(years, function (key, value) {
+        $('#years').append('<a class="btn btn-block btn-default box-header" id="year-'+ value.id +'" name="schoolYear">' +
+                              '<h3 class="box-title">'+ value.name +'</h3>' +
+                              '<div class="box-tools pull-right">' +
+                                '<button class="btn btn-box-tool" type="button" data-toggle="modal" data-target="#editYearModal"><i class="fa fa-pencil"></i></button>' +
+                              '</div>' +
+                           '</a>');
+      })
+    })
+  }
+
+  function loadTerms(yearId) {
+    $.get('getTerms/' + yearId, function (terms) {
+      $('#terms').html("");
+      $('#subjects').html("");
+      $.each(terms, function (key, value) {
+        $('#terms').append('<a class="btn btn-block btn-default box-header" id="term-'+value.id+'" name="schoolTerm">' +
+                              '<h3 class="box-title">'+value.name+'</h3>' +
+                              '<div class="box-tools pull-right">' +
+                                '<button class="btn btn-box-tool" type="button" data-toggle="modal" data-target="#editTermModal"><i class="fa fa-pencil"></i></button>' +
+                              '</div>' +
+                           '</a>');
+      })
+    });
+  }
+
+  function loadSubjects(termId) {
+    $.get('getSubjects/' + termId, function (subjects) {
+      $('#subjects').html("");
+      $.each(subjects, function (key, value) {
+        $('#subjects').append('<a class="btn btn-block btn-default box-header" id="subject-'+value.id+'" name="subject" href="{{url('/subject')}}'+'/'+value.id+'">' +
+                                '<h3 class="box-title">'+value.name+'</h3>' +
+                              '</a>');
+      })
+    });
+  }
+
 </script>
 </body>
 </html>

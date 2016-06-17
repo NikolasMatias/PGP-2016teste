@@ -55,7 +55,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src={{url('/photoUser')}} class="img-circle" alt="User Image">
+          <img src={{url('/resources/img/user.jpg')}} class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <?php $user = \Auth::user();?>

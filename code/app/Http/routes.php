@@ -42,13 +42,13 @@
     return redirect(url('/userNotLogged'));
 });
 
-\Route::get('/schedule', function (){
-    if (Auth::check()){
-        $scheduleFeedback = null;
-        return view('Schedule', compact('scheduleFeedback'));
-    }
-    return redirect(url('/userNotLogged'));
-});
+\Route::get('/schedule', 'ScheduleController@index');
+
+\Route::get('/getYears', 'ScheduleController@getYears');
+
+\Route::get('/getTerms/{yearId}', 'ScheduleController@getTerms');
+
+\Route::get('/getSubjects/{termId}', 'ScheduleController@getSubjects');
 
 \Route::get('/subject/{subject_id}', function ($subject_id){
     if (Auth::check()){
@@ -92,6 +92,8 @@
 
 \Route::get('/newSchoolTerm/{yearID}', 'ScheduleController@createSchoolTerm');
 
+\Route::get('/newSubject/{schoolTermID}', 'ScheduleController@createSubject');
+
 \Route::get('/newSchedule/{subject_id}', 'SubjectController@createSchedule');
 
 \Route::get('/newTask/{subject_id}', 'SubjectController@createTask');
@@ -102,4 +104,6 @@ Route::get('/requestRecoveryPassword','LoginController@forgotPassword');
 
 Route::get('/passwordChanged/{unique_key}','SettingsController@recoverPassword');
 
-Route::get('/photoUser','PhotoController@teste');
+Route::get('/fbLogin', 'FBAuthController@login');
+Route::get('/fbCallback', 'FBAuthController@callback');
+Route::get('/fbInputPassword/{userEmail}', 'FBAuthController@register');
